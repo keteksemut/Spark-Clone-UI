@@ -1,0 +1,117 @@
+{
+  "G": [
+    {
+      "_type": "navigationItem",
+      "href": "/savings",
+      "title": "Savings"
+    },
+    {
+      "_type": "navigationItem",
+      "href": "/borrow",
+      "title": "SparkLend"
+    },
+    {
+      "_type": "navigationItem",
+      "href": "/spk",
+      "title": "SPK"
+    }
+  ],
+  "UY": [
+    {
+      "title": "Socials",
+      "childItems": [
+        {
+          "_type": "navigationItem",
+          "href": "https://x.com/sparkdotfi",
+          "title": "X"
+        },
+        {
+          "_type": "navigationItem",
+          "href": "https://discord.gg/sparkdotfi",
+          "title": "Discord"
+        },
+        {
+          "_type": "navigationItem",
+          "href": "https://blog.spark.fi",
+          "title": "Blog"
+        },
+        {
+          "_type": "navigationItem",
+          "href": "https://t.me/sparkdotfi_chat",
+          "title": "Telegram"
+        },
+        {
+          "_type": "navigationItem",
+          "href": "https://www.youtube.com/@sparkdotfi",
+          "title": "Youtube"
+        },
+        {
+          "_type": "navigationItem",
+          "title": "GitHub",
+          "href": "https://github.com/sparkdotfi"
+        },
+        {
+          "_type": "navigationItem",
+          "title": "Forum",
+          "href": "https://forum.sky.money/c/spark-subdao/84"
+        }
+      ]
+    },
+    {
+      "_type": "navigationItem",
+      "title": "GitHub ",
+      "href": "https://github.com/sparkdotfi"
+    },
+    {
+      "_type": "navigationItem",
+      "title": "Forum ",
+      "href": "https://forum.sky.money/c/spark-subdao/84"
+    }
+  ],
+  "nf": [
+    {
+      "_type": "navigationItem",
+      "childItems": [
+        {
+          "_type": "navigationItem",
+          "href": "https://docs.spark.fi/faq",
+          "title": "FAQ",
+          "hasIcon": true
+        },
+        {
+          "_type": "navigationItem",
+          "href": "https://docs.spark.fi/",
+          "title": "Docs",
+          "hasIcon": true
+        },
+        {
+          "_type": "navigationItem",
+          "href": "https://devs.spark.fi/security/security-and-audits",
+          "title": "Audits",
+          "hasIcon": true
+        }
+      ],
+      "title": "Learn"
+    }
+  ],
+  "$o": [
+    {
+      "_type": "navigationItem",
+      "childItems": [
+        {
+          "_type": "navigationItem",
+          "href": "https://app.spark.fi/borrow",
+          "title": "Borrow USDS at ${value}",
+          "sparkInfoId": "sparklendUsdsBorrowRate"
+        },
+        {
+          "_type": "navigationItem",
+          "href": "https://app.spark.fi/savings",
+          "title": "Earn ${value} with Savings",
+          "sparkInfoId": "ssr"
+        }
+      ],
+      "title": "Open Spark"
+    }
+  ]
+}

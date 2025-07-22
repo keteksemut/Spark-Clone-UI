@@ -1,0 +1,774 @@
+.Link {
+    display: flex;
+    align-items: center;
+    width: -moz-fit-content;
+    width: fit-content;
+    border-radius: 8px
+}
+
+.Link__icon1,.Link__icon2 {
+    will-change: transform
+}
+
+.Link:focus-visible .Link__container:before {
+    opacity: 1;
+    width: 100%
+}
+
+.Link .Link__iconContainer {
+    overflow: hidden;
+    height: 24px;
+    width: 24px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 8px
+}
+
+.Link .Link__iconContainer svg {
+    flex-shrink: 0
+}
+
+@media(hover: hover)and (min-width:1024px) {
+    .Link:hover .Link__icon1 {
+        animation:icon-from-bottom .45s var(--timing-function-ex) forwards!important
+    }
+
+    .Link:hover .Link__icon1,.Link:hover .Link__icon2 {
+        position: absolute;
+        transition: .45s var(--timing-function-ex);
+        width: 16px;
+        height: 16px;
+        top: calc(50% - 8px);
+        left: calc(50% - 8px)
+    }
+
+    .Link:hover .Link__icon2 {
+        animation: icon-to-top .45s var(--timing-function-ex) forwards!important
+    }
+
+    .Link:hover .Link__container:before {
+        width: 100%;
+        opacity: 1
+    }
+}
+
+.Link__large {
+    transition: .35s var(--timing-function-ex);
+    box-shadow: 0 0 0 1px var(--black);
+    position: relative;
+    outline: none;
+    padding: 12px 20px 12px 12px;
+    overflow: hidden;
+    background-color: var(--white);
+    max-width: 221px
+}
+
+@media(min-width: 1920px) {
+    .Link__large {
+        max-width:252px
+    }
+}
+
+.Link__large .Link__iconContainer {
+    overflow: hidden;
+    min-height: 24px;
+    width: 24px;
+    position: relative;
+    top: -2px;
+    left: 0;
+    margin-top: 2px;
+    margin-left: 0
+}
+
+@media(hover: hover) {
+    .Link__large:hover:before {
+        opacity:0!important
+    }
+}
+
+@media(hover: hover)and (min-width:1024px) {
+    .Link__large:hover {
+        background-color:var(--black);
+        color: var(--white);
+        transition: .35s var(--timing-function-ex)
+    }
+
+    .Link__large:hover svg path {
+        stroke: var(--white)
+    }
+
+    .Link__large:hover .Link__icon1 {
+        animation: icon-to-top .35s var(--timing-function-ex) forwards!important
+    }
+
+    .Link__large:hover .Link__icon1,.Link__large:hover .Link__icon2 {
+        position: absolute;
+        transition: .45s var(--timing-function-ex);
+        width: 24px;
+        height: 24px;
+        top: calc(50% - 12px);
+        left: calc(50% - 12px)
+    }
+
+    .Link__large:hover .Link__icon2 {
+        animation: icon-from-bottom .35s var(--timing-function-ex) forwards!important
+    }
+
+    .Link__large:hover .Link__container:before {
+        width: 0;
+        opacity: 0
+    }
+}
+
+.Link__large:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px inset var(--black)
+}
+
+.Link__large:focus-visible .Link__container:before {
+    opacity: 0;
+    width: 0
+}
+
+.Link__large svg {
+    flex-shrink: 0
+}
+
+.Link__large span {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%
+}
+
+.Link__large:active {
+    background-color: var(--white)
+}
+
+@media(hover: hover) {
+    .Link__large:active {
+        background-color:var(--gray-100)
+    }
+}
+
+.Link__mediumBlack {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    font-weight: 500;
+    box-shadow: 0 0 0 1px inset var(--black);
+    transition: .25s var(--timing-function-ex);
+    background-color: var(--black);
+    color: var(--white);
+    outline: none;
+    overflow: hidden;
+    padding: 16px 28px
+}
+
+@media(min-width: 1440px) {
+    .Link__mediumBlack {
+        font-size:16px;
+        line-height: 24px
+    }
+}
+
+@media(min-width: 1920px) {
+    .Link__mediumBlack {
+        font-size:20px;
+        line-height: 28px
+    }
+}
+
+.Link__mediumBlack svg {
+    width: 16px;
+    height: 16px
+}
+
+@media(hover: hover) {
+    .Link__mediumBlack:hover {
+        color:var(--black)
+    }
+}
+
+@media(hover: hover)and (min-width:1024px) {
+    .Link__mediumBlack:hover {
+        background-color:var(--white);
+        box-shadow: 0 0 0 1px inset var(--black);
+        color: var(--black)
+    }
+
+    .Link__mediumBlack:hover .text1 {
+        animation: text-to-top .25s var(--timing-function-ex) forwards!important
+    }
+
+    .Link__mediumBlack:hover .text2 {
+        animation: text-from-bottom .25s var(--timing-function-ex) forwards!important
+    }
+
+    .Link__mediumBlack:hover .Link__container:before {
+        width: 0;
+        opacity: 0
+    }
+}
+
+.Link__mediumBlack:focus-visible {
+    outline: 0;
+    box-shadow: 0 0 0 3px inset var(--purple)
+}
+
+.Link__mediumBlack:focus-visible:before {
+    opacity: 0;
+    width: 0
+}
+
+@media(min-width: 1024px) {
+    .Link__mediumBlack:active {
+        background-color:var(--white);
+        box-shadow: 0 0 0 1px inset var(--black)
+    }
+}
+
+.Link__mediumWhiteMed {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    font-weight: 500;
+    box-shadow: 0 0 0 1px inset var(--black);
+    transition: .25s var(--timing-function-ex);
+    background-color: var(--white);
+    color: var(--black);
+    outline: none;
+    padding: 16px 28px;
+    overflow: hidden
+}
+
+@media(min-width: 1440px) {
+    .Link__mediumWhiteMed {
+        font-size:16px;
+        line-height: 24px
+    }
+}
+
+@media(min-width: 1920px) {
+    .Link__mediumWhiteMed {
+        font-size:20px;
+        line-height: 28px
+    }
+}
+
+.Link__mediumWhiteMed svg {
+    width: 16px;
+    height: 16px
+}
+
+@media(hover: hover)and (min-width:1024px) {
+    .Link__mediumWhiteMed:hover {
+        background-color:var(--black);
+        color: var(--white)
+    }
+
+    .Link__mediumWhiteMed:hover .text1 {
+        animation: text-to-top .25s var(--timing-function-ex) forwards!important
+    }
+
+    .Link__mediumWhiteMed:hover .text2 {
+        animation: text-from-bottom .25s var(--timing-function-ex) forwards!important
+    }
+
+    .Link__mediumWhiteMed:hover .Link__container:before {
+        width: 0;
+        opacity: 0
+    }
+
+    .Link__mediumWhiteMed:hover:before {
+        opacity: 0!important
+    }
+}
+
+.Link__mediumWhiteMed:focus-visible {
+    outline: 0;
+    box-shadow: 0 0 0 3px inset var(--black)
+}
+
+.Link__mediumWhiteMed:focus-visible .Link__container:before {
+    opacity: 0;
+    width: 0
+}
+
+@media(min-width: 1024px) {
+    .Link__mediumWhiteMed:active {
+        background-color:var(--gray-90);
+        box-shadow: 0 0 0 1px inset var(--gray-90)
+    }
+}
+
+.Link__mediumTransparent {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    font-weight: 500;
+    color: var(--black)
+}
+
+@media(min-width: 1440px) {
+    .Link__mediumTransparent {
+        font-size:16px;
+        line-height: 24px
+    }
+}
+
+@media(min-width: 1920px) {
+    .Link__mediumTransparent {
+        font-size:20px;
+        line-height: 28px
+    }
+}
+
+.Link__mediumTransparent .Link__iconContainer {
+    height: 16px!important;
+    width: 16px!important
+}
+
+.Link__mediumTransparent svg {
+    width: 16px;
+    height: 16px
+}
+
+@media(hover: hover)and (min-width:1024px) {
+    .Link__mediumTransparent:hover {
+        background-color:transparent
+    }
+
+    .Link__mediumTransparent:hover .Link__container:before {
+        opacity: 1;
+        width: 100%
+    }
+}
+
+@media(min-width: 1024px) {
+    .Link__mediumTransparent:focus-visible {
+        background-color:transparent
+    }
+
+    .Link__mediumTransparent:focus-visible .Link__container:before {
+        opacity: 1;
+        width: 100%
+    }
+}
+
+.Link__mediumTransparent:focus-visible {
+    outline: 0;
+    box-shadow: 0 0 0 3px var(--black)
+}
+
+@media(min-width: 1024px) {
+    .Link__mediumTransparent:active {
+        color:var(--gray-70);
+        box-shadow: none
+    }
+
+    .Link__mediumTransparent:active svg path {
+        stroke: var(--gray-70)
+    }
+
+    .Link__mediumTransparent:active .Link__container :before {
+        background-color: var(--gray-70)
+    }
+}
+
+.Link__mediumWhite {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    font-weight: 500;
+    padding: 6px;
+    color: var(--white)
+}
+
+@media(min-width: 1440px) {
+    .Link__mediumWhite {
+        font-size:16px;
+        line-height: 24px
+    }
+}
+
+@media(min-width: 1920px) {
+    .Link__mediumWhite {
+        font-size:20px;
+        line-height: 28px
+    }
+}
+
+.Link__mediumWhite .Link__container:before {
+    background-color: var(--white)
+}
+
+.Link__mediumWhite .Link__iconContainer {
+    height: 16px!important;
+    width: 16px!important
+}
+
+.Link__mediumWhite svg {
+    width: 16px;
+    height: 16px
+}
+
+.Link__mediumWhite svg path {
+    stroke: var(--white)
+}
+
+@media(hover: hover)and (min-width:1024px) {
+    .Link__mediumWhite:hover {
+        background-color:transparent
+    }
+
+    .Link__mediumWhite:hover .Link__container:before {
+        opacity: 1;
+        width: 100%
+    }
+}
+
+@media(min-width: 1024px) {
+    .Link__mediumWhite:focus-visible {
+        background-color:transparent
+    }
+
+    .Link__mediumWhite:focus-visible .Link__container:before {
+        opacity: 1;
+        width: 100%
+    }
+}
+
+.Link__mediumWhite:focus-visible {
+    outline: 0;
+    box-shadow: 0 0 0 3px var(--white)
+}
+
+@media(min-width: 1024px) {
+    .Link__mediumWhite:active {
+        color:var(--gray-10);
+        box-shadow: none
+    }
+
+    .Link__mediumWhite:active svg path {
+        stroke: var(--gray-10)
+    }
+
+    .Link__mediumWhite:active .Link__container_white :before {
+        background-color: var(--gray-10)
+    }
+}
+
+.Link__small {
+    padding: 6px;
+    position: relative;
+    color: var(--black);
+    border-radius: 8px
+}
+
+@media(hover: hover)and (min-width:1024px) {
+    .Link__small:hover .Link__container :before {
+        opacity:1;
+        width: 100%
+    }
+}
+
+@media(min-width: 1024px) {
+    .Link__small:focus-visible .Link__container :before {
+        opacity:1;
+        width: 100%
+    }
+}
+
+.Link__small:focus-visible {
+    outline: 0;
+    box-shadow: 0 0 0 2px var(--black)
+}
+
+@media(min-width: 1024px) {
+    .Link__small:active {
+        color:var(--gray-70);
+        box-shadow: none
+    }
+
+    .Link__small:active .Link__container :before {
+        background-color: var(--gray-70)
+    }
+}
+
+.Link__submenu {
+    color: var(--black);
+    background-color: transparent;
+    padding: 8px 10px 8px 12px;
+    border-radius: 8px;
+    outline: none
+}
+
+.Link__submenu .Link__iconContainer {
+    width: 16px;
+    height: 16px
+}
+
+.Link__submenu .Link__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 160px
+}
+
+.Link__submenu svg {
+    width: 16px
+}
+
+@media(hover: hover)and (min-width:1024px) {
+    .Link__submenu:hover {
+        background-color:var(--gray-10)
+    }
+
+    .Link__submenu:hover svg {
+        opacity: 1
+    }
+
+    .Link__submenu:hover .Link__container:before {
+        width: 0;
+        opacity: 0
+    }
+}
+
+.Link__submenu:focus-visible {
+    box-shadow: 0 0 0 2px var(--black)
+}
+
+.Link__submenu:focus-visible .Link__container:before {
+    width: 0;
+    opacity: 0
+}
+
+.Link__submenu:focus-visible svg {
+    opacity: 1
+}
+
+@media(min-width: 1024px) {
+    .Link__submenu:active {
+        background-color:var(--gray-20)
+    }
+
+    .Link__submenu:active svg {
+        opacity: 1
+    }
+}
+
+.Link__text {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    font-weight: 500
+}
+
+@media(min-width: 1440px) {
+    .Link__text {
+        font-size:16px;
+        line-height: 24px
+    }
+}
+
+@media(min-width: 1920px) {
+    .Link__text {
+        font-size:20px;
+        line-height: 28px
+    }
+}
+
+.Link__text_large {
+    margin-top: 42px;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    font-weight: 500
+}
+
+@media(min-width: 1440px) {
+    .Link__text_large {
+        font-size:16px;
+        line-height: 24px
+    }
+}
+
+@media(min-width: 1920px) {
+    .Link__text_large {
+        font-size:20px;
+        line-height: 28px
+    }
+}
+
+@media(min-width: 768px) {
+    .Link__text_large {
+        margin-top:32px
+    }
+}
+
+@media(min-width: 1024px) {
+    .Link__text_large {
+        margin-top:40px
+    }
+}
+
+.Link__text_small {
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0
+}
+
+@media(min-width: 1440px) {
+    .Link__text_small {
+        font-size:14px;
+        line-height: 20px
+    }
+}
+
+@media(min-width: 1920px) {
+    .Link__text_small {
+        font-size:17px;
+        line-height: 24px
+    }
+}
+
+.Link__text_submenu {
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0
+}
+
+@media(min-width: 1440px) {
+    .Link__text_submenu {
+        font-size:14px;
+        line-height: 20px
+    }
+}
+
+@media(min-width: 1920px) {
+    .Link__text_submenu {
+        font-size:17px;
+        line-height: 24px;
+        font-size: 14px;
+        line-height: 20px
+    }
+}
+
+.Link__container {
+    position: relative;
+    display: flex;
+    align-items: center
+}
+
+.Link__container:before {
+    background-color: var(--black)
+}
+
+.Link__container:before,.Link__container_white :before {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 0;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: .2s ease
+}
+
+.Link__container_white :before {
+    background-color: var(--white)
+}
+
+.Link__icon {
+    width: 24px;
+    height: 24px
+}
+
+.textContainer {
+    position: relative
+}
+
+.text1 {
+    transform: translateY(0);
+    position: relative;
+    top: 0
+}
+
+.text2 {
+    position: absolute;
+    top: 40px;
+    left: 0
+}
+
+.Button {
+    padding: 22px 50px;
+    background-color: var(--black);
+    color: var(--white)
+}
+
+@media(hover: hover)and (min-width:1024px) {
+    .Button:hover {
+        background-color:var(--purple)
+    }
+}
+
+@media(min-width: 1024px) {
+    .Button:active {
+        background-color:var(--gray-100)
+    }
+}
+
+@keyframes icon-to-top {
+    0% {
+        transform: translateZ(0)
+    }
+
+    to {
+        transform: translate3d(100%,-100%,0)
+    }
+}
+
+@keyframes icon-from-bottom {
+    0% {
+        transform: translate3d(-100%,100%,0)
+    }
+
+    to {
+        transform: translateZ(0)
+    }
+}
+
+@keyframes text-to-top {
+    0% {
+        top: 0;
+        opacity: 1
+    }
+
+    to {
+        top: -56px;
+        opacity: 0
+    }
+}
+
+@keyframes text-from-bottom {
+    0% {
+        top: 56px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}

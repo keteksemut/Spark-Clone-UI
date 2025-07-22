@@ -1,0 +1,299 @@
+@font-face {
+    font-family: Roobert;
+    src: local("Roobert"),url(/fonts/Inter-VariableFont_opsz,wght.ttf) format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: fallback
+}
+
+@font-face {
+    font-family: Roobert;
+    src: local("Roobert"),local("Roobert"),url(/fonts/WEB/Roobert-Medium.woff2) format("woff2"),url(/fonts/DP/WEB/Roobert-Medium.woff) format("woff"),url(/fonts/DP/TTF/Roobert-Medium.ttf) format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: fallback
+}
+
+@font-face {
+    font-family: Roobert;
+    src: local("Roobert"),local("Roobert"),url(/fonts/WEB/Roobert-Medium.woff2) format("woff2"),url(/fonts/DP/WEB/Roobert-Medium.woff) format("woff"),url(/fonts/DP/TTF/Roobert-Medium.ttf) format("truetype");
+    font-weight: 600;
+    font-style: normal;
+    font-display: fallback
+}
+
+@font-face {
+    font-family: Inter;
+    src: local("Inter"),url(/fonts/Inter-Regular.woff2) format("woff2"),local("Inter"),url(/fonts/DP/Inter-Regular.ttf) format("truetype"),local("Inter"),url(/fonts/DP/Inter-Regular.otf) format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: fallback
+}
+
+@font-face {
+    font-family: Inter;
+    src: local("Inter"),url(/fonts/Inter-Medium.woff2) format("woff2"),local("Inter"),url(/fonts/DP/Inter-Medium.ttf) format("truetype"),local("Inter"),url(/fonts/DP/Inter-Medium.otf) format("opentype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: fallback
+}
+
+body {
+    font-family: Inter,sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    color: var(--text-color);
+    min-width: 320px;
+    font-feature-settings: "ss01" on,"ss02" on,"liga" off
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: Roobert
+}
+
+body>#__next {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto
+}
+
+.js-focus-visible :focus:not(.focus-visible),[data-js-focus-visible] :focus:not([data-focus-visible-added]) {
+    outline: none
+}
+
+:disabled {
+    cursor: default
+}
+
+address {
+    font-style: normal
+}
+
+sup {
+    font-size: 64%;
+    vertical-align: unset;
+    position: relative;
+    top: -.5em
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    -webkit-overflow-scrolling: auto
+}
+
+*,:after,:before {
+    box-sizing: border-box
+}
+
+body,html {
+    border: 0;
+    height: 100%
+}
+
+body {
+    height: auto;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed
+}
+
+body,button {
+    -webkit-tap-highlight-color: rgba(0,0,0,0)
+}
+
+button {
+    display: inline-block;
+    background: none;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    text-align: left;
+    cursor: pointer
+}
+
+button,input,optgroup,select,textarea {
+    font-family: inherit
+}
+
+a {
+    color: inherit;
+    text-decoration: none
+}
+
+button {
+    border: none
+}
+
+button::-moz-focus-inner {
+    border: 0
+}
+
+input:-webkit-autofill,input:-webkit-autofill:active,input:-webkit-autofill:focus,input:-webkit-autofill:hover {
+    -webkit-transition: color 5000s ease-in-out 0s,background-color 5000s ease-in-out 0s;
+    transition: color 5000s ease-in-out 0s,background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: var(--white)!important
+}
+
+input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration,input[type=search]::-webkit-search-results-button,input[type=search]::-webkit-search-results-decoration {
+    -webkit-appearance: none
+}
+
+input:required {
+    box-shadow: none
+}
+
+input:invalid {
+    box-shadow: 0 0 0 transparent
+}
+
+textarea {
+    overflow: auto
+}
+
+li {
+    list-style: none outside none
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-weight: 400
+}
+
+:root {
+    --black: #101014;
+    --white: #fff;
+    --purple: var(--purple-80);
+    --yellow: var(--yellow-40);
+    --gray-10: #f5f5fa;
+    --gray-20: #d9d8e3;
+    --gray-30: #c1c0cc;
+    --gray-40: #a8a7b5;
+    --gray-50: #908e9e;
+    --gray-60: #787787;
+    --gray-70: #626070;
+    --gray-80: #626070;
+    --gray-90: #373642;
+    --gray-100: #23232b;
+    --yellow-10: #fff2cf;
+    --yellow-20: #ffe6a4;
+    --yellow-30: #ffda79;
+    --yellow-40: #ffcd4d;
+    --yellow-50: #fabc20;
+    --yellow-60: #edaa00;
+    --yellow-70: #d99b00;
+    --yellow-80: #bd8700;
+    --yellow-90: #996e00;
+    --yellow-100: #7a5800;
+    --purple-10: #e5e5ff;
+    --purple-20: #d3d3ff;
+    --purple-30: #bfbfff;
+    --purple-40: #aaa8ff;
+    --purple-50: #928cff;
+    --purple-60: #7a6bff;
+    --purple-70: #6a4dff;
+    --purple-80: #5823f3;
+    --purple-90: #4900d1;
+    --purple-100: #3a00a6;
+    --orange-10: #ffe4d6;
+    --orange-20: #ffd2bd;
+    --orange-30: #ffbb9e;
+    --orange-40: #ff895d;
+    --orange-60: #f76d36;
+    --orange-70: #e85313;
+    --orange-80: #d14200;
+    --orange-90: #b23c00;
+    --orange-100: #b23c00;
+    --orange-1000: #b23c00;
+    --green-10: #bfffef;
+    --green-20: #8cffe4;
+    --green-30: #57f7d5;
+    --green-40: #23ebc3;
+    --green-50: #00d9b1;
+    --green-60: #00c2a1;
+    --green-70: #00a68d;
+    --green-80: #008573;
+    --green-90: #008573;
+    --green-100: #00544c;
+    --gradient-primary: linear-gradient(90deg,#fa43bd,#ffcd4d);
+    --gradient-primary2: linear-gradient(90deg,#fd25b5,#ffc42c);
+    --orange-gradient: linear-gradient(90deg,#ff895d,#ffe6a4 50%,#fff);
+    --purple-gradient: linear-gradient(90deg,#7a6bff,#bddeff 50%,#fff);
+    --magenta-gradient: linear-gradient(90deg,#fa43bd,#ffb5b5 50%,#fff);
+    --green-gradient: linear-gradient(90deg,#00c2a1,#57f7d5 50%,#fff);
+    --ease: cubic-bezier(1,0,0,1);
+    --ease-out: cubic-bezier(0.19,1,0.22,1);
+    --ease-in: cubic-bezier(0.95,0.05,0.795,0.035);
+    --default: cubic-bezier(0.25,0.1,0.25,1);
+    --ease-power-2: cubic-bezier(0.77,0,0.175,1);
+    --ease-power-3: cubic-bezier(0.645,0.045,0.355,1);
+    --ease-power-4: cubic-bezier(0.86,0,0.07,1);
+    --ease-sine: cubic-bezier(0.445,0.05,0.55,0.95);
+    --ease-in-power-2: cubic-bezier(0.55,0.055,0.675,0.19);
+    --ease-in-power-3: cubic-bezier(0.55,0.085,0.68,0.53);
+    --ease-out-power-2: cubic-bezier(0.25,0.46,0.45,0.94);
+    --ease-out-power-3: cubic-bezier(0.215,0.61,0.355,1);
+    --ease-out-quint: cubic-bezier(0.22,1,0.36,1);
+    --easeOutExpo: cubic-bezier(0.14,1,0.34,1);
+    --easeInOutExpo: cubic-bezier(0.87,0,0.13,1);
+    --easeInOutSine: cubic-bezier(0.37,0,0.63,1);
+    --timing-function-ex: cubic-bezier(0.2,0,0,1);
+    --timing-function-pr: cubic-bezier(0.4,0,0.2,1);
+    --timing-function-mainpr: cubic-bezier(0.14,0,0,1);
+    --timing-function-cardpr: cubic-bezier(0.5,0,0.15,1);
+    --easy-ease: cubic-bezier(0.33,0,0.67,1);
+    --text-color: --black;
+    --grid-base: 12;
+    --grid-count: 12;
+    --grid-column-gap: 8px;
+    --grid-row-gap: 12px;
+    --margin: 12px;
+    --duration-80: 80ms;
+    --duration-170: 170ms;
+    --duration-250: 250ms;
+    --duration-300: 300ms;
+    --duration-330: 330ms;
+    --duration-400: 400ms;
+    --duration-500: 500ms;
+    --duration-1000: 1000ms;
+    --duration-1700: 1700ms;
+    --delay-50: 50ms
+}
+
+@media(min-width: 768px) {
+    :root {
+        --margin:16px;
+        --grid-column-gap: 8px;
+        --grid-row-gap: 16px;
+        --header-height: 70px
+    }
+}
+
+@media(min-width: 1440px) {
+    :root {
+        --margin:20px;
+        --grid-column-gap: 20px;
+        --grid-row-gap: 20px
+    }
+}
+
+@media(min-width: 1920px) {
+    :root {
+        --margin:40px;
+        --grid-column-gap: 20px;
+        --grid-row-gap: 20px
+    }
+}

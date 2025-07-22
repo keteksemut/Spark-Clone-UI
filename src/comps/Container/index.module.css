@@ -1,0 +1,19 @@
+.container {
+    padding-left: var(--margin);
+    padding-right: var(--margin);
+    margin-left: auto;
+    margin-right: auto
+}
+
+@media(min-width: 1440px) {
+    .container {
+        padding-left:var(--margin);
+        padding-right: var(--margin)
+    }
+}
+
+@media(min-width: 1920px) {
+    .container {
+        max-width:2640px
+    }
+}

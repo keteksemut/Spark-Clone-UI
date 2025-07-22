@@ -1,0 +1,19 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    fill="none"
+>
+    <path
+        fill="#fff"
+        fillRule="evenodd"
+        d="M19.701 4.706 5 20l-.704-.704L18.998 4.003l.703.703Z"
+        clipRule="evenodd"
+    />
+    <path
+        fill="#fff"
+        fillRule="evenodd"
+        d="M19 20 4.293 4.707 5 4l14.707 15.293L19 20Z"
+        clipRule="evenodd"
+    />
+</svg>
