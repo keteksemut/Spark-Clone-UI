@@ -1,167 +1,181 @@
-import { dropdownManager, registerDropdown, unregisterDropdown } from "@/libs/dropdownManager";
-import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
+// components/Dropdown/index.jsx
+import { useEffect, useRef, useCallback } from "react";
 import { usePathname } from "next/navigation";
+import cn from "clsx";
+import useDropdownStore from "@/libs/dropdownStore";
 import Collapse from "../Collapse";
-import { useDropdownState } from "@/hooks/useDropdownState";
-import useClickOutside from "@/hooks/useClickOutside";
 import Minus from "@/assets/icons/Minus.svg";
 import Plus from "@/assets/icons/Plus.svg";
-import cn from "clsx";
 import st from "./index.module.css";
 
-
-const W = createContext({
-    id: "",
-    showOnHover: !1,
+// Context for sharing id and showOnHover
+import { createContext, useContext } from "react";
+const DropdownContext = createContext({
+  id: "",
+  showOnHover: false,
 });
 
-export default function Dropdown ({
-    id,
-    open,
-    children,
-    showOnHover,
-    closeOnOutsideClick,
-    className,
+export default function Dropdown({
+  id,
+  open = false,
+  children,
+  showOnHover = false,
+  closeOnOutsideClick = true,
+  className,
 }) {
-    const f = usePathname();
-    const h = useRef(null);
-    const [isOpen, _] = useState(open || !1);
+  const { dropdowns, register, unregister, open: openDropdown, close } = useDropdownStore(
+    (state) => ({
+      dropdowns: state.dropdowns,
+      register: state.register,
+      unregister: state.unregister,
+      open: state.open,
+      close: state.close,
+    })
+  );
+  const ref = useRef(null);
+  const pathname = usePathname();
 
-    useEffect(() => dropdownManager[open ? "open" : "close"](id), [open, id]);
+  // Register/unregister dropdown
+  useEffect(() => {
+    register(id, open);
+    return () => unregister(id);
+  }, [id, open, register, unregister]);
 
-    useEffect(() => dropdownManager.close(id), [f, id]);
+  // Sync controlled `open` prop
+  useEffect(() => {
+    if (open) openDropdown(id);
+    else close(id);
+  }, [open, id, openDropdown, close]);
 
-    useEffect(() => {
-        registerDropdown({ id, isOpen });
+  // Close on route change
+  useEffect(() => {
+    close(id);
+  }, [pathname, id, close]);
 
-        return () => {
-            unregisterDropdown(id);
-        }
-    }, [id, isOpen]);
+  // Handle hover
+  const handleHover = useCallback(
+    (isEntering) => {
+      if (showOnHover) {
+        isEntering ? openDropdown(id) : close(id);
+      }
+    },
+    [id, showOnHover, openDropdown, close]
+  );
 
-    const M = useCallback(() => {
-        const e = dropdownManager.getById(id);
-        if (e) _(e.isOpen);
-    }, [id]);
+  // Handle focus for hover
+  useEffect(() => {
+    const handleFocus = () => {
+      if (showOnHover) {
+        const isFocused = ref.current?.contains(document.activeElement);
+        isFocused ? openDropdown(id) : close(id);
+      }
+    };
+    document.addEventListener("focus", handleFocus, true);
+    return () => document.removeEventListener("focus", handleFocus, true);
+  }, [id, showOnHover, openDropdown, close]);
 
-    useEffect(() => {
-        dropdownManager.subscribe(M);
-        return () => {
-            dropdownManager.unsubscribe(M);
-        }
-    }, [M]);
+  // Handle outside click
+  useEffect(() => {
+    if (!closeOnOutsideClick) return;
+    const handleClickOutside = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        close(id);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [id, closeOnOutsideClick, close]);
 
-    const V = useCallback(() => {
-        if (showOnHover) {
-            const e = h.current?.contains(document.activeElement);
-            dropdownManager[e ? "open" : "close"](id);
-        }
-    }, [id, showOnHover]);
+  return (
+    <DropdownContext.Provider value={{ id, showOnHover }}>
+      <div
+        ref={ref}
+        className={cn(st.root, className)}
+        onMouseEnter={() => handleHover(true)}
+        onMouseLeave={() => handleHover(false)}
+      >
+        {children}
+      </div>
+    </DropdownContext.Provider>
+  );
+}
 
-    useEffect(() => {
-        document.addEventListener("focus", V, !0);
-        return () => {
-            document.removeEventListener("focus", V, !0);
-        }
-    }, [V]);
-
-    useClickOutside({
-        ref: h,
-        handler: () => closeOnOutsideClick && dropdownManager.close(id),
-    });
-
-    return (
-        <W.Provider
-            value={{
-                id: id,
-                showOnHover: showOnHover,
-            }}
-        >
-            <div
-                ref={h}
-                className={cn(st.root, className)}
-                onMouseEnter={() => showOnHover && dropdownManager.open(id)}
-                onMouseLeave={() => showOnHover && dropdownManager.close(id)}
-            >
-                {children}
-            </div>
-        </W.Provider>
-    )
-};
-
-Dropdown.displayName = "Dropdown"
+Dropdown.displayName = "Dropdown";
 
 Dropdown.Popover = ({ children, className }) => {
-    const { id, showOnHover } = useContext(W);
-    const { isOpen } = useDropdownState(id) || {};
-    const u = useRef(null);
+  const { id, showOnHover } = useContext(DropdownContext);
+  const { dropdowns, close } = useDropdownStore((state) => ({
+    dropdowns: state.dropdowns,
+    close: state.close,
+  }));
+  const isOpen = dropdowns[id]?.isOpen || false;
+  const ref = useRef(null);
 
-    useEffect(() => {
-        u.current &&
-            !showOnHover &&
-            u.current
-                .querySelectorAll(
-                    "a, button, input, textarea, select, details",
-                )
-                .forEach((e) => {
-                    e.tabIndex = isOpen ? 0 : -1;
-                });
-    }, [isOpen, showOnHover]);
+  // Update tabIndex for accessibility
+  useEffect(() => {
+    if (ref.current && !showOnHover) {
+      ref.current
+        .querySelectorAll("a, button, input, textarea, select, details")
+        .forEach((el) => {
+          el.tabIndex = isOpen ? 0 : -1;
+        });
+    }
+  }, [isOpen, showOnHover]);
 
-    useEffect(() => {
-        const e = (e) => {
-            isOpen && ("Escape" === e.key || "Esc" === e.key) && dropdownManager.close(id);
-        };
-        return (
-            window.addEventListener("keydown", e),
-            () => {
-                window.removeEventListener("keydown", e);
-            }
-        );
-    }, [isOpen, id]);
+  // Handle Escape key
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (isOpen && (e.key === "Escape" || e.key === "Esc")) {
+        close(id);
+      }
+    };
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [isOpen, id, close]);
 
-    return (
-        <div
-            className={cn(st.popover, isOpen && st.popover_open, className)}
-            id={id}
-            aria-hidden={!isOpen}
-            ref={u}
-        >
-            {children}
-        </div>
-    );
+  return (
+    <div
+      className={cn(st.popover, isOpen && st.popover_open, className)}
+      id={id}
+      aria-hidden={!isOpen}
+      ref={ref}
+    >
+      {children}
+    </div>
+  );
 };
 
-Dropdown.Collapse = (e) => {
-    const { id } = useContext(W),
-        { isOpen = !1 } = useDropdownState(id) || {};
-    return (
-        <Collapse id={id} open={isOpen} {...e} />
-    );
+Dropdown.Collapse = (props) => {
+  const { id } = useContext(DropdownContext);
+  const { dropdowns } = useDropdownStore((state) => ({ dropdowns: state.dropdowns }));
+  const isOpen = dropdowns[id]?.isOpen || false;
+  return <Collapse id={id} open={isOpen} {...props} />;
 };
 
-Dropdown.Button = ({ children, className, hasIcon = !0 }) => {
-    const { id, showOnHover } = useContext(W);
-    const { isOpen } = useDropdownState(id) || {};
+Dropdown.Button = ({ children, className, hasIcon = true }) => {
+  const { id, showOnHover } = useContext(DropdownContext);
+  const { dropdowns, toggle } = useDropdownStore((state) => ({
+    dropdowns: state.dropdowns,
+    toggle: state.toggle,
+  }));
+  const isOpen = dropdowns[id]?.isOpen || false;
 
-    return (
-        <button
-            className={cn(st.button, className)}
-            onClick={() => {
-                showOnHover || dropdownManager.toggle(id);
-            }}
-            aria-controls={id}
-            aria-expanded={isOpen}
-        >
-            <span className={st.label}>
-                {children}
-                {hasIcon && (
-                    <span className={st.iconContainer}>
-                        <Minus className={cn(st.iconMinus, isOpen && st.iconMinus_expanded)} />
-                        <Plus className={cn(st.iconPlus, isOpen && st.iconPlus_expanded)} />
-                    </span>
-                )}
-            </span>
-        </button>
-    );
+  return (
+    <button
+      className={cn(st.button, className)}
+      onClick={() => !showOnHover && toggle(id)}
+      aria-controls={id}
+      aria-expanded={isOpen}
+    >
+      <span className={st.label}>
+        {children}
+        {hasIcon && (
+          <span className={st.iconContainer}>
+            <Minus className={cn(st.iconMinus, isOpen && st.iconMinus_expanded)} />
+            <Plus className={cn(st.iconPlus, isOpen && st.iconPlus_expanded)} />
+          </span>
+        )}
+      </span>
+    </button>
+  );
 };
